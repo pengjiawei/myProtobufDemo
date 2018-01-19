@@ -76,12 +76,17 @@ void createSocketAndReceive() {
 
                 memset(recvData, 0, BUFF_SIZE);
 
-                ssize_t byte_num = recv(client_sock_fd, recvData, sizeof(recvData),
-                                        0);
+                printf("sizeof recv Data = %d\n",sizeof(recvData));
+                char buf_tmp[10240];
+                memset(buf_tmp,0,sizeof(buf_tmp));
+                size_t byte_num = 0;
+                while((byte_num = recv(client_sock_fd, buf_tmp, sizeof(buf_tmp),
+                           0)) != 0){
+                    printf("recv_return = %d\n", byte_num);
+                    strcat(recvData,buf_tmp);
+                }
 
-                printf("recv_Ret = %d\n", byte_num);
                 if (byte_num > 0) {
-                    printf("%d\n", byte_num);
                 } else if (byte_num < 0) {
                     close(client_sock_fd);
                     client_sock_fd = 0;
