@@ -83,11 +83,11 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, id_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, str_),
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, opt_),
-  1,
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, x_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, y_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloWorld, valid_),
   0,
+  1,
   2,
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloArray, _has_bits_),
   GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::hello::HelloArray, _internal_metadata_),
@@ -129,13 +129,13 @@ void protobuf_RegisterTypes(const ::std::string&) {
 void AddDescriptorsImpl() {
   InitDefaults();
   static const char descriptor[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
-      "\n\013hello.proto\022\005hello\"2\n\nHelloWorld\022\n\n\002id"
-      "\030\001 \002(\005\022\013\n\003str\030\002 \002(\t\022\013\n\003opt\030\003 \001(\005\"3\n\nHell"
-      "oArray\022%\n\nhelloWorld\030\001 \003(\0132\021.hello.Hello"
-      "World"
+      "\n\013hello.proto\022\005hello\"1\n\nHelloWorld\022\t\n\001x\030"
+      "\001 \002(\005\022\t\n\001y\030\002 \002(\005\022\r\n\005valid\030\003 \001(\005\"3\n\nHello"
+      "Array\022%\n\nhelloWorld\030\001 \003(\0132\021.hello.HelloW"
+      "orld"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 125);
+      descriptor, 124);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "hello.proto", &protobuf_RegisterTypes);
 }
@@ -158,9 +158,9 @@ namespace hello {
 void HelloWorld::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int HelloWorld::kIdFieldNumber;
-const int HelloWorld::kStrFieldNumber;
-const int HelloWorld::kOptFieldNumber;
+const int HelloWorld::kXFieldNumber;
+const int HelloWorld::kYFieldNumber;
+const int HelloWorld::kValidFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 HelloWorld::HelloWorld()
@@ -177,22 +177,17 @@ HelloWorld::HelloWorld(const HelloWorld& from)
       _has_bits_(from._has_bits_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
-  str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  if (from.has_str()) {
-    str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.str_);
-  }
-  ::memcpy(&id_, &from.id_,
-    static_cast<size_t>(reinterpret_cast<char*>(&opt_) -
-    reinterpret_cast<char*>(&id_)) + sizeof(opt_));
+  ::memcpy(&x_, &from.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&valid_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(valid_));
   // @@protoc_insertion_point(copy_constructor:hello.HelloWorld)
 }
 
 void HelloWorld::SharedCtor() {
   _cached_size_ = 0;
-  str_.UnsafeSetDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  ::memset(&id_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&opt_) -
-      reinterpret_cast<char*>(&id_)) + sizeof(opt_));
+  ::memset(&x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&valid_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(valid_));
 }
 
 HelloWorld::~HelloWorld() {
@@ -201,7 +196,6 @@ HelloWorld::~HelloWorld() {
 }
 
 void HelloWorld::SharedDtor() {
-  str_.DestroyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
 }
 
 void HelloWorld::SetCachedSize(int size) const {
@@ -227,14 +221,10 @@ void HelloWorld::Clear() {
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  if (cached_has_bits & 0x00000001u) {
-    GOOGLE_DCHECK(!str_.IsDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited()));
-    str_.UnsafeMutablePointer()->clear();
-  }
-  if (cached_has_bits & 6u) {
-    ::memset(&id_, 0, static_cast<size_t>(
-        reinterpret_cast<char*>(&opt_) -
-        reinterpret_cast<char*>(&id_)) + sizeof(opt_));
+  if (cached_has_bits & 7u) {
+    ::memset(&x_, 0, static_cast<size_t>(
+        reinterpret_cast<char*>(&valid_) -
+        reinterpret_cast<char*>(&x_)) + sizeof(valid_));
   }
   _has_bits_.Clear();
   _internal_metadata_.Clear();
@@ -250,44 +240,42 @@ bool HelloWorld::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // required int32 id = 1;
+      // required int32 x = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(8u /* 8 & 0xFF */)) {
-          set_has_id();
+          set_has_x();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &id_)));
+                 input, &x_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // required string str = 2;
+      // required int32 y = 2;
       case 2: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
-            static_cast< ::google::protobuf::uint8>(18u /* 18 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadString(
-                input, this->mutable_str()));
-          ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-            this->str().data(), static_cast<int>(this->str().length()),
-            ::google::protobuf::internal::WireFormat::PARSE,
-            "hello.HelloWorld.str");
+            static_cast< ::google::protobuf::uint8>(16u /* 16 & 0xFF */)) {
+          set_has_y();
+          DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
+                   ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
+                 input, &y_)));
         } else {
           goto handle_unusual;
         }
         break;
       }
 
-      // optional int32 opt = 3;
+      // optional int32 valid = 3;
       case 3: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(24u /* 24 & 0xFF */)) {
-          set_has_opt();
+          set_has_valid();
           DO_((::google::protobuf::internal::WireFormatLite::ReadPrimitive<
                    ::google::protobuf::int32, ::google::protobuf::internal::WireFormatLite::TYPE_INT32>(
-                 input, &opt_)));
+                 input, &valid_)));
         } else {
           goto handle_unusual;
         }
@@ -321,24 +309,19 @@ void HelloWorld::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required int32 id = 1;
-  if (cached_has_bits & 0x00000002u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->id(), output);
-  }
-
-  // required string str = 2;
+  // required int32 x = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->str().data(), static_cast<int>(this->str().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "hello.HelloWorld.str");
-    ::google::protobuf::internal::WireFormatLite::WriteStringMaybeAliased(
-      2, this->str(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(1, this->x(), output);
   }
 
-  // optional int32 opt = 3;
+  // required int32 y = 2;
+  if (cached_has_bits & 0x00000002u) {
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(2, this->y(), output);
+  }
+
+  // optional int32 valid = 3;
   if (cached_has_bits & 0x00000004u) {
-    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->opt(), output);
+    ::google::protobuf::internal::WireFormatLite::WriteInt32(3, this->valid(), output);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -356,25 +339,19 @@ void HelloWorld::SerializeWithCachedSizes(
   (void) cached_has_bits;
 
   cached_has_bits = _has_bits_[0];
-  // required int32 id = 1;
-  if (cached_has_bits & 0x00000002u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->id(), target);
-  }
-
-  // required string str = 2;
+  // required int32 x = 1;
   if (cached_has_bits & 0x00000001u) {
-    ::google::protobuf::internal::WireFormat::VerifyUTF8StringNamedField(
-      this->str().data(), static_cast<int>(this->str().length()),
-      ::google::protobuf::internal::WireFormat::SERIALIZE,
-      "hello.HelloWorld.str");
-    target =
-      ::google::protobuf::internal::WireFormatLite::WriteStringToArray(
-        2, this->str(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(1, this->x(), target);
   }
 
-  // optional int32 opt = 3;
+  // required int32 y = 2;
+  if (cached_has_bits & 0x00000002u) {
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(2, this->y(), target);
+  }
+
+  // optional int32 valid = 3;
   if (cached_has_bits & 0x00000004u) {
-    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->opt(), target);
+    target = ::google::protobuf::internal::WireFormatLite::WriteInt32ToArray(3, this->valid(), target);
   }
 
   if (_internal_metadata_.have_unknown_fields()) {
@@ -389,18 +366,18 @@ size_t HelloWorld::RequiredFieldsByteSizeFallback() const {
 // @@protoc_insertion_point(required_fields_byte_size_fallback_start:hello.HelloWorld)
   size_t total_size = 0;
 
-  if (has_str()) {
-    // required string str = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->str());
-  }
-
-  if (has_id()) {
-    // required int32 id = 1;
+  if (has_x()) {
+    // required int32 x = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->id());
+        this->x());
+  }
+
+  if (has_y()) {
+    // required int32 y = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->y());
   }
 
   return total_size;
@@ -415,24 +392,24 @@ size_t HelloWorld::ByteSizeLong() const {
         _internal_metadata_.unknown_fields());
   }
   if (((_has_bits_[0] & 0x00000003) ^ 0x00000003) == 0) {  // All required fields are present.
-    // required string str = 2;
-    total_size += 1 +
-      ::google::protobuf::internal::WireFormatLite::StringSize(
-        this->str());
-
-    // required int32 id = 1;
+    // required int32 x = 1;
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->id());
+        this->x());
+
+    // required int32 y = 2;
+    total_size += 1 +
+      ::google::protobuf::internal::WireFormatLite::Int32Size(
+        this->y());
 
   } else {
     total_size += RequiredFieldsByteSizeFallback();
   }
-  // optional int32 opt = 3;
-  if (has_opt()) {
+  // optional int32 valid = 3;
+  if (has_valid()) {
     total_size += 1 +
       ::google::protobuf::internal::WireFormatLite::Int32Size(
-        this->opt());
+        this->valid());
   }
 
   int cached_size = ::google::protobuf::internal::ToCachedSize(total_size);
@@ -467,14 +444,13 @@ void HelloWorld::MergeFrom(const HelloWorld& from) {
   cached_has_bits = from._has_bits_[0];
   if (cached_has_bits & 7u) {
     if (cached_has_bits & 0x00000001u) {
-      set_has_str();
-      str_.AssignWithDefault(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), from.str_);
+      x_ = from.x_;
     }
     if (cached_has_bits & 0x00000002u) {
-      id_ = from.id_;
+      y_ = from.y_;
     }
     if (cached_has_bits & 0x00000004u) {
-      opt_ = from.opt_;
+      valid_ = from.valid_;
     }
     _has_bits_[0] |= cached_has_bits;
   }
@@ -505,9 +481,9 @@ void HelloWorld::Swap(HelloWorld* other) {
 }
 void HelloWorld::InternalSwap(HelloWorld* other) {
   using std::swap;
-  str_.Swap(&other->str_);
-  swap(id_, other->id_);
-  swap(opt_, other->opt_);
+  swap(x_, other->x_);
+  swap(y_, other->y_);
+  swap(valid_, other->valid_);
   swap(_has_bits_[0], other->_has_bits_[0]);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);

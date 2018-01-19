@@ -162,43 +162,35 @@ class HelloWorld : public ::google::protobuf::Message /* @@protoc_insertion_poin
 
   // accessors -------------------------------------------------------
 
-  // required string str = 2;
-  bool has_str() const;
-  void clear_str();
-  static const int kStrFieldNumber = 2;
-  const ::std::string& str() const;
-  void set_str(const ::std::string& value);
-  #if LANG_CXX11
-  void set_str(::std::string&& value);
-  #endif
-  void set_str(const char* value);
-  void set_str(const char* value, size_t size);
-  ::std::string* mutable_str();
-  ::std::string* release_str();
-  void set_allocated_str(::std::string* str);
+  // required int32 x = 1;
+  bool has_x() const;
+  void clear_x();
+  static const int kXFieldNumber = 1;
+  ::google::protobuf::int32 x() const;
+  void set_x(::google::protobuf::int32 value);
 
-  // required int32 id = 1;
-  bool has_id() const;
-  void clear_id();
-  static const int kIdFieldNumber = 1;
-  ::google::protobuf::int32 id() const;
-  void set_id(::google::protobuf::int32 value);
+  // required int32 y = 2;
+  bool has_y() const;
+  void clear_y();
+  static const int kYFieldNumber = 2;
+  ::google::protobuf::int32 y() const;
+  void set_y(::google::protobuf::int32 value);
 
-  // optional int32 opt = 3;
-  bool has_opt() const;
-  void clear_opt();
-  static const int kOptFieldNumber = 3;
-  ::google::protobuf::int32 opt() const;
-  void set_opt(::google::protobuf::int32 value);
+  // optional int32 valid = 3;
+  bool has_valid() const;
+  void clear_valid();
+  static const int kValidFieldNumber = 3;
+  ::google::protobuf::int32 valid() const;
+  void set_valid(::google::protobuf::int32 value);
 
   // @@protoc_insertion_point(class_scope:hello.HelloWorld)
  private:
-  void set_has_id();
-  void clear_has_id();
-  void set_has_str();
-  void clear_has_str();
-  void set_has_opt();
-  void clear_has_opt();
+  void set_has_x();
+  void clear_has_x();
+  void set_has_y();
+  void clear_has_y();
+  void set_has_valid();
+  void clear_has_valid();
 
   // helper for ByteSizeLong()
   size_t RequiredFieldsByteSizeFallback() const;
@@ -206,9 +198,9 @@ class HelloWorld : public ::google::protobuf::Message /* @@protoc_insertion_poin
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
   ::google::protobuf::internal::HasBits<1> _has_bits_;
   mutable int _cached_size_;
-  ::google::protobuf::internal::ArenaStringPtr str_;
-  ::google::protobuf::int32 id_;
-  ::google::protobuf::int32 opt_;
+  ::google::protobuf::int32 x_;
+  ::google::protobuf::int32 y_;
+  ::google::protobuf::int32 valid_;
   friend struct ::protobuf_hello_2eproto::TableStruct;
   friend void ::protobuf_hello_2eproto::InitDefaultsHelloWorldImpl();
 };
@@ -340,115 +332,76 @@ class HelloArray : public ::google::protobuf::Message /* @@protoc_insertion_poin
 #endif  // __GNUC__
 // HelloWorld
 
-// required int32 id = 1;
-inline bool HelloWorld::has_id() const {
-  return (_has_bits_[0] & 0x00000002u) != 0;
-}
-inline void HelloWorld::set_has_id() {
-  _has_bits_[0] |= 0x00000002u;
-}
-inline void HelloWorld::clear_has_id() {
-  _has_bits_[0] &= ~0x00000002u;
-}
-inline void HelloWorld::clear_id() {
-  id_ = 0;
-  clear_has_id();
-}
-inline ::google::protobuf::int32 HelloWorld::id() const {
-  // @@protoc_insertion_point(field_get:hello.HelloWorld.id)
-  return id_;
-}
-inline void HelloWorld::set_id(::google::protobuf::int32 value) {
-  set_has_id();
-  id_ = value;
-  // @@protoc_insertion_point(field_set:hello.HelloWorld.id)
-}
-
-// required string str = 2;
-inline bool HelloWorld::has_str() const {
+// required int32 x = 1;
+inline bool HelloWorld::has_x() const {
   return (_has_bits_[0] & 0x00000001u) != 0;
 }
-inline void HelloWorld::set_has_str() {
+inline void HelloWorld::set_has_x() {
   _has_bits_[0] |= 0x00000001u;
 }
-inline void HelloWorld::clear_has_str() {
+inline void HelloWorld::clear_has_x() {
   _has_bits_[0] &= ~0x00000001u;
 }
-inline void HelloWorld::clear_str() {
-  str_.ClearToEmptyNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-  clear_has_str();
+inline void HelloWorld::clear_x() {
+  x_ = 0;
+  clear_has_x();
 }
-inline const ::std::string& HelloWorld::str() const {
-  // @@protoc_insertion_point(field_get:hello.HelloWorld.str)
-  return str_.GetNoArena();
+inline ::google::protobuf::int32 HelloWorld::x() const {
+  // @@protoc_insertion_point(field_get:hello.HelloWorld.x)
+  return x_;
 }
-inline void HelloWorld::set_str(const ::std::string& value) {
-  set_has_str();
-  str_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), value);
-  // @@protoc_insertion_point(field_set:hello.HelloWorld.str)
-}
-#if LANG_CXX11
-inline void HelloWorld::set_str(::std::string&& value) {
-  set_has_str();
-  str_.SetNoArena(
-    &::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::move(value));
-  // @@protoc_insertion_point(field_set_rvalue:hello.HelloWorld.str)
-}
-#endif
-inline void HelloWorld::set_str(const char* value) {
-  GOOGLE_DCHECK(value != NULL);
-  set_has_str();
-  str_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), ::std::string(value));
-  // @@protoc_insertion_point(field_set_char:hello.HelloWorld.str)
-}
-inline void HelloWorld::set_str(const char* value, size_t size) {
-  set_has_str();
-  str_.SetNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(),
-      ::std::string(reinterpret_cast<const char*>(value), size));
-  // @@protoc_insertion_point(field_set_pointer:hello.HelloWorld.str)
-}
-inline ::std::string* HelloWorld::mutable_str() {
-  set_has_str();
-  // @@protoc_insertion_point(field_mutable:hello.HelloWorld.str)
-  return str_.MutableNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline ::std::string* HelloWorld::release_str() {
-  // @@protoc_insertion_point(field_release:hello.HelloWorld.str)
-  clear_has_str();
-  return str_.ReleaseNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited());
-}
-inline void HelloWorld::set_allocated_str(::std::string* str) {
-  if (str != NULL) {
-    set_has_str();
-  } else {
-    clear_has_str();
-  }
-  str_.SetAllocatedNoArena(&::google::protobuf::internal::GetEmptyStringAlreadyInited(), str);
-  // @@protoc_insertion_point(field_set_allocated:hello.HelloWorld.str)
+inline void HelloWorld::set_x(::google::protobuf::int32 value) {
+  set_has_x();
+  x_ = value;
+  // @@protoc_insertion_point(field_set:hello.HelloWorld.x)
 }
 
-// optional int32 opt = 3;
-inline bool HelloWorld::has_opt() const {
+// required int32 y = 2;
+inline bool HelloWorld::has_y() const {
+  return (_has_bits_[0] & 0x00000002u) != 0;
+}
+inline void HelloWorld::set_has_y() {
+  _has_bits_[0] |= 0x00000002u;
+}
+inline void HelloWorld::clear_has_y() {
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline void HelloWorld::clear_y() {
+  y_ = 0;
+  clear_has_y();
+}
+inline ::google::protobuf::int32 HelloWorld::y() const {
+  // @@protoc_insertion_point(field_get:hello.HelloWorld.y)
+  return y_;
+}
+inline void HelloWorld::set_y(::google::protobuf::int32 value) {
+  set_has_y();
+  y_ = value;
+  // @@protoc_insertion_point(field_set:hello.HelloWorld.y)
+}
+
+// optional int32 valid = 3;
+inline bool HelloWorld::has_valid() const {
   return (_has_bits_[0] & 0x00000004u) != 0;
 }
-inline void HelloWorld::set_has_opt() {
+inline void HelloWorld::set_has_valid() {
   _has_bits_[0] |= 0x00000004u;
 }
-inline void HelloWorld::clear_has_opt() {
+inline void HelloWorld::clear_has_valid() {
   _has_bits_[0] &= ~0x00000004u;
 }
-inline void HelloWorld::clear_opt() {
-  opt_ = 0;
-  clear_has_opt();
+inline void HelloWorld::clear_valid() {
+  valid_ = 0;
+  clear_has_valid();
 }
-inline ::google::protobuf::int32 HelloWorld::opt() const {
-  // @@protoc_insertion_point(field_get:hello.HelloWorld.opt)
-  return opt_;
+inline ::google::protobuf::int32 HelloWorld::valid() const {
+  // @@protoc_insertion_point(field_get:hello.HelloWorld.valid)
+  return valid_;
 }
-inline void HelloWorld::set_opt(::google::protobuf::int32 value) {
-  set_has_opt();
-  opt_ = value;
-  // @@protoc_insertion_point(field_set:hello.HelloWorld.opt)
+inline void HelloWorld::set_valid(::google::protobuf::int32 value) {
+  set_has_valid();
+  valid_ = value;
+  // @@protoc_insertion_point(field_set:hello.HelloWorld.valid)
 }
 
 // -------------------------------------------------------------------

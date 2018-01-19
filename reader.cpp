@@ -11,7 +11,7 @@
 #include<arpa/inet.h>
 #include <unistd.h>
 using namespace std;
-const int BUFF_SIZE = 1024;
+const int BUFF_SIZE = 1843200;
 char recvData[BUFF_SIZE];
 void createSocketAndReceive() {
 
@@ -99,7 +99,7 @@ void createSocketAndReceive() {
 int main(){
     createSocketAndReceive();
     const string saved_file = "./hello";
-    hello::HelloWorld msg1;
+    hello::HelloWorld hello1;
     hello::HelloArray helloArray;;
     fstream input(saved_file.c_str(),ios::in | ios::binary);
 //    if(!helloArray.ParseFromIstream(&input)){
@@ -111,11 +111,11 @@ int main(){
     }
 
     printf("helloArray size = %d\n",helloArray.helloworld_size());
-    for(int i = 0 ; i < helloArray.helloworld_size();++i){
-        msg1 = helloArray.helloworld(i);
-        printf("index = %d,id = %d\n",i,msg1.id());
-        printf("index = %d,str = %s\n",i,msg1.str().c_str());
-    }
+//    for(int i = 0 ; i < helloArray.helloworld_size();++i){
+//        hello1 = helloArray.helloworld(i);
+//        printf("index = %d,x = %d\n",i,hello1.x());
+//        printf("index = %d,y = %d\n",i,hello1.y());
+//    }
 
 
     return 0;

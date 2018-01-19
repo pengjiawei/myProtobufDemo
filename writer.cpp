@@ -14,7 +14,7 @@
 #include<arpa/inet.h>
 #include <unistd.h>
 
-const int BUFF_SIZE = 1024;
+const int BUFF_SIZE = 1843200;
 using namespace std;
 char buff[BUFF_SIZE];
 void createSocketAndSend(const std::string& ip,const std::string& port){
@@ -51,9 +51,11 @@ void createSocketAndSend(const std::string& ip,const std::string& port){
         printf("Connect socket failed\n");
         close(sock_id);
     }
-
+    clock_t start,end;
+    start = clock();
     send(sock_id, buff, sizeof(buff), 0);
-
+    end = clock();
+    cout<<"execute time = "<<end-start<<endl;
     close(sock_id);
 }
 
@@ -61,20 +63,15 @@ int main(){
     const string ip = "192.168.31.198";
     const string port = "12002";
     const string saved_file = "./hello";
-    hello::HelloWorld* msg1;
+    hello::HelloWorld* hello1;
     hello::HelloArray helloArray;
 
-    msg1 = helloArray.add_helloworld();
-    msg1->set_id(01);
-    msg1->set_str("hello_world1");
 
-    msg1 = helloArray.add_helloworld();
-    msg1->set_id(02);
-    msg1->set_str("hello_world2");
-
-    msg1 = helloArray.add_helloworld();
-    msg1->set_id(03);
-    msg1->set_str("hello_world3");
+    for(unsigned  int index = 0 ; index < 480*480 ; ++index){
+        hello1 = helloArray.add_helloworld();
+        hello1->set_x(255);
+        hello1->set_y(255);
+    }
 
     printf("size = %d\n",helloArray.helloworld_size());
     printf("len = %d\n",helloArray.ByteSize());
